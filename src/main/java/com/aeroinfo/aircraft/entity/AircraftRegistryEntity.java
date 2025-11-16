@@ -1,10 +1,12 @@
 package com.aeroinfo.aircraft.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 @Entity
 @Table(name = "aircraft_registry")
-public class AircraftRegistry {
+@Builder
+public class AircraftRegistryEntity {
 
     @Id
     @Column(name = "icao_code", length = 10)
