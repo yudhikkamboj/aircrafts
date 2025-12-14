@@ -5,6 +5,7 @@ import com.aeroinfo.aircraft.model.BasicInfo;
 import com.aeroinfo.aircraft.service.AircraftRegistryService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +19,27 @@ import java.util.List;
 public class AircraftController {
 
     private final AircraftRegistryService aircraftService;
+    private final RedisTemplate redisTemplate;
 
     @GetMapping("/get")
-//    public ResponseEntity<List<AircraftRegistryEntity>> getAircraft(@RequestParam("name") String name){
     public ResponseEntity<List<AircraftRegistryEntity>> getAircraft(){
         List<AircraftRegistryEntity> aircraftDetails = aircraftService.getAllAircrafts();
         return new ResponseEntity<>(aircraftDetails, HttpStatus.OK);
     }
+
+    @GetMapping("/get-red")
+    public ResponseEntity<String> getRedAircraft(){
+        String aircraftDetails = redisTemplate.opsForValue().get("some").toString();
+        return new ResponseEntity<>(aircraftDetails, HttpStatus.OK);
+    }
+
+    @GetMapping("/set-red")
+    public ResponseEntity<String> setRedAircraft(){
+        redisTemplate.opsForValue().set("some", "some");
+        String aircraftDetails = redisTemplate.opsForValue().get("some").toString();
+        return new ResponseEntity<>(aircraftDetails, HttpStatus.OK);
+    }
+
 
     @GetMapping("/getAircraft")
     public ResponseEntity<List<AircraftRegistryEntity>> getAircraft(@RequestParam("name") String name){

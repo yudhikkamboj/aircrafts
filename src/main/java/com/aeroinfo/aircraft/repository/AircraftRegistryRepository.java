@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AircraftRegistryRepository extends CrudRepository<AircraftRegistryEntity, String> {
 
-    List<AircraftRegistryEntity> findByName(String name);
+    List<AircraftRegistryEntity> findByAircraftType(String name);
 }

@@ -1,11 +1,15 @@
 package com.aeroinfo.aircraft.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
+import lombok.*;
 
 @Entity
 @Table(name = "aircraft_registry")
 @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AircraftRegistryEntity {
 
     @Id
@@ -41,94 +45,4 @@ public class AircraftRegistryEntity {
 
     @Column(name = "reference_link", columnDefinition = "TEXT")
     private String referenceLink;
-
-    // Getters and Setters
-
-    public String getIcaoCode() {
-        return icaoCode;
-    }
-
-    public void setIcaoCode(String icaoCode) {
-        this.icaoCode = icaoCode;
-    }
-
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
-        this.registration = registration;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
-    public String getAircraftType() {
-        return aircraftType;
-    }
-
-    public void setAircraftType(String aircraftType) {
-        this.aircraftType = aircraftType;
-    }
-
-    public String getIcaoType() {
-        return icaoType;
-    }
-
-    public void setIcaoType(String icaoType) {
-        this.icaoType = icaoType;
-    }
-
-    public String getCategoryCode() {
-        return categoryCode;
-    }
-
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public String getTag1() {
-        return tag1;
-    }
-
-    public void setTag1(String tag1) {
-        this.tag1 = tag1;
-    }
-
-    public String getTag2() {
-        return tag2;
-    }
-
-    public void setTag2(String tag2) {
-        this.tag2 = tag2;
-    }
-
-    public String getTag3() {
-        return tag3;
-    }
-
-    public void setTag3(String tag3) {
-        this.tag3 = tag3;
-    }
-
-    public String getCategoryLabel() {
-        return categoryLabel;
-    }
-
-    public void setCategoryLabel(String categoryLabel) {
-        this.categoryLabel = categoryLabel;
-    }
-
-    public String getReferenceLink() {
-        return referenceLink;
-    }
-
-    public void setReferenceLink(String referenceLink) {
-        this.referenceLink = referenceLink;
-    }
 }
